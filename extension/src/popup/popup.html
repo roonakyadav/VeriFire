@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VeriFire</title>
+    <style>
+      /* Dark theme styles */
+      body {
+        margin: 0;
+        padding: 12px;
+        font-family: system-ui, sans-serif;
+        font-size: 13px;
+        min-width: 240px;
+        background-color: #121212;
+        color: #e0e0e0;
+        transition: background-color 0.3s ease;
+      }
+      
+      h1 {
+        font-size: 15px;
+        margin: 0 0 12px;
+        color: #ffffff;
+        font-weight: 600;
+      }
+      
+      .row {
+        margin-bottom: 10px;
+      }
+      
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        padding: 6px 0;
+      }
+      
+      .toggle-label {
+        font-size: 13px;
+        color: #e0e0e0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      
+      /* Custom toggle switch */
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+      }
+      
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #444444;
+        transition: .3s;
+        border-radius: 10px;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        background-color: #aaaaaa;
+        transition: .3s;
+        border-radius: 50%;
+      }
+      
+      input:checked + .slider {
+        background-color: #6a5acd;
+      }
+      
+      input:checked + .slider:before {
+        transform: translateX(20px);
+        background-color: #ffffff;
+      }
+      
+      button {
+        padding: 6px 12px;
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      
+      button:hover {
+        background-color: #3a3a3a;
+      }
+      
+      input[type="text"] {
+        width: 100%;
+        padding: 6px;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      .status {
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.8;
+        padding: 6px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      
+      .status.success {
+        background-color: rgba(76, 175, 80, 0.15);
+        color: #a5d6a7;
+      }
+      
+      .status.info {
+        background-color: rgba(33, 150, 243, 0.15);
+        color: #90caf9;
+      }
+      
+      .ai-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background-color: rgba(106, 90, 205, 0.2);
+        color: #b19cd9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>VeriFire</h1>
+    
+    <!-- AI Intent Classification Toggle -->
+    <div class="row">
+      <div class="toggle-container">
+        <span class="toggle-label">
+          AI Intent Classification
+        </span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="aiToggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div id="aiStatus" class="status info" style="display: none;"></div>
+    </div>
+    
+    <div class="row">
+      <label>
+        Active bucket IDs (comma-separated):
+        <input id="bucketIds" type="text" />
+      </label>
+    </div>
+    <div class="row">
+      <button id="saveBtn">Save</button>
+    </div>
+    <div id="status" class="status"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VeriFire Options</title>
+    <style>
+      /* Dark theme styles */
+      body {
+        margin: 0;
+        padding: 16px;
+        font-family: system-ui, sans-serif;
+        font-size: 13px;
+        background-color: #121212;
+        color: #e0e0e0;
+        min-width: 400px;
+      }
+      
+      h1 {
+        font-size: 18px;
+        margin: 0 0 16px;
+        color: #ffffff;
+        font-weight: 600;
+      }
+      
+      .row {
+        margin-bottom: 12px;
+      }
+      
+      textarea {
+        width: 100%;
+        min-height: 160px;
+        padding: 8px;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 12px;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease;
+      }
+      
+      textarea:focus {
+        outline: none;
+        border-color: #6a5acd;
+      }
+      
+      input[type="text"] {
+        width: 100%;
+        padding: 6px;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease;
+      }
+      
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #6a5acd;
+      }
+      
+      button {
+        padding: 8px 16px;
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+      }
+      
+      button:hover {
+        background-color: #3a3a3a;
+        border-color: #6a5acd;
+      }
+      
+      .status {
+        margin-top: 12px;
+        font-size: 12px;
+        padding: 6px;
+        border-radius: 4px;
+        background-color: rgba(106, 90, 205, 0.1);
+        color: #b19cd9;
+        transition: all 0.3s ease;
+      }
+      
+      .status.success {
+        background-color: rgba(76, 175, 80, 0.15);
+        color: #a5d6a7;
+      }
+      
+      .status.error {
+        background-color: rgba(244, 67, 54, 0.15);
+        color: #ef9a9a;
+      }
+      
+      /* Bucket ID display */
+      .bucket-id-container {
+        margin: 12px 0;
+        padding: 12px;
+        background-color: #1a1a1a;
+        border: 1px solid #444444;
+        border-radius: 4px;
+      }
+      
+      .bucket-id-label {
+        font-size: 12px;
+        color: #b19cd9;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+      
+      .bucket-id-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .bucket-id-value {
+        font-family: monospace;
+        font-size: 14px;
+        background-color: #2a2a2a;
+        padding: 4px 8px;
+        border-radius: 3px;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      
+      .copy-btn {
+        padding: 4px 12px;
+        background-color: #3a3a3a;
+        color: #e0e0e0;
+        border: 1px solid #555555;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.2s ease;
+      }
+      
+      .copy-btn:hover {
+        background-color: #4a4a4a;
+        border-color: #6a5acd;
+      }
+      
+      .copy-status {
+        margin-top: 8px;
+        padding: 6px;
+        border-radius: 4px;
+        background-color: rgba(106, 90, 205, 0.15);
+        color: #b19cd9;
+        font-size: 12px;
+        transition: opacity 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>VeriFire Options</h1>
+    <div class="row">
+      <label>
+        Backend base URL:
+        <input id="backendUrl" type="text" />
+      </label>
+    </div>
+    <div class="row">
+      <label>
+        New Knowledge Bucket instructions:
+        <textarea id="instructions" placeholder="One instruction per line. Use 'must', 'must not', 'never', 'should', 'only', etc."></textarea>
+      </label>
+    </div>
+    <div class="row">
+      <label>
+        Bucket name:
+        <input id="bucketName" type="text" />
+      </label>
+    </div>
+    <div class="row">
+      <button id="createBucketBtn">Create / Update Bucket</button>
+    </div>
+    
+    <!-- Persistent Bucket ID display -->
+    <div id="bucketIdContainer" class="bucket-id-container" style="display: none;">
+      <div class="bucket-id-label">Bucket ID</div>
+      <div class="bucket-id-content">
+        <span id="bucketIdDisplay" class="bucket-id-value"></span>
+        <button id="copyBucketIdBtn" class="copy-btn">Copy ID</button>
+      </div>
+    </div>
+    
+    <div id="status" class="status"></div>
+    <div id="copyStatus" class="copy-status" style="display: none;"></div>
+    <script src="options.js"></script>
+  </body>
+</html>

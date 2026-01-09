@@ -1,0 +1,92 @@
+{
+  "id": "mk723hyj",
+  "name": "xyz",
+  "description": "",
+  "tags": [],
+  "updatedAt": "2026-01-09T15:54:02.543Z",
+  "instructions": "Production database credentials must never be shared.\nDo not provide steps to bypass authentication.\nDo not give SQL injection payloads.\nExplanations about security concepts are allowed.\nHigh-level defensive guidance is allowed.",
+  "projects": [
+    {
+      "id": "proj-default",
+      "name": "Default Project",
+      "requiredApis": [],
+      "requiredFeatures": [],
+      "learningObjectives": [],
+      "projectOptions": [],
+      "complexityLevel": null
+    }
+  ],
+  "globalRules": {
+    "scopeRules": [],
+    "forbiddenApis": [
+      {
+        "id": "sec-forbidden-2-forbidden_api-1",
+        "type": "FORBIDDEN_API",
+        "severity": "HIGH",
+        "pattern": "explanations about security concepts",
+        "apiNames": [],
+        "tags": [],
+        "sourceText": "Explanations about security concepts are allowed.",
+        "source": {
+          "sectionId": "sec-forbidden-2",
+          "line": 4,
+          "rawText": "Explanations about security concepts are allowed."
+        },
+        "confidence": "MEDIUM",
+        "projectId": null
+      },
+      {
+        "id": "sec-forbidden-2-forbidden_api-2",
+        "type": "FORBIDDEN_API",
+        "severity": "HIGH",
+        "pattern": "high level defensive guidance",
+        "apiNames": [],
+        "tags": [],
+        "sourceText": "High-level defensive guidance is allowed.",
+        "source": {
+          "sectionId": "sec-forbidden-2",
+          "line": 5,
+          "rawText": "High-level defensive guidance is allowed."
+        },
+        "confidence": "MEDIUM",
+        "projectId": null
+      }
+    ],
+    "beginnerSafetyConstraints": [],
+    "otherRules": []
+  },
+  "rules": [
+    {
+      "id": "sec-forbidden-2-forbidden_api-1",
+      "type": "FORBIDDEN_API",
+      "severity": "HIGH",
+      "pattern": "explanations about security concepts",
+      "apiNames": [],
+      "tags": [],
+      "sourceText": "Explanations about security concepts are allowed.",
+      "source": {
+        "sectionId": "sec-forbidden-2",
+        "line": 4,
+        "rawText": "Explanations about security concepts are allowed."
+      },
+      "confidence": "MEDIUM",
+      "projectId": null
+    },
+    {
+      "id": "sec-forbidden-2-forbidden_api-2",
+      "type": "FORBIDDEN_API",
+      "severity": "HIGH",
+      "pattern": "high level defensive guidance",
+      "apiNames": [],
+      "tags": [],
+      "sourceText": "High-level defensive guidance is allowed.",
+      "source": {
+        "sectionId": "sec-forbidden-2",
+        "line": 5,
+        "rawText": "High-level defensive guidance is allowed."
+      },
+      "confidence": "MEDIUM",
+      "projectId": null
+    }
+  ]
+}

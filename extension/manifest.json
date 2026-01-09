@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "VeriFire ChatGPT Linter",
+  "version": "0.1.0",
+  "description": "Local-first rule-based linter for ChatGPT outputs using a local Node.js backend.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:7310/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "VeriFire"
+  },
+  "options_page": "src/options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "js": ["src/content/chatgptDomReader.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
